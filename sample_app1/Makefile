@@ -7,7 +7,7 @@
 
 # Set appropriate CUDA Version here 
 # Use command `nvcc --version` to check your default CUDA version
-CUDA_VER:=11.6
+CUDA_VER:=12.1
 
 APP:= deepstream_tutorial_app1
 
@@ -38,6 +38,7 @@ LIBS:= $(shell pkg-config --libs $(PKGS))
 LIBS+= -L/usr/local/cuda-$(CUDA_VER)/lib64/ -lcudart \
 		-L$(LIB_INSTALL_DIR) -lnvdsgst_meta -lnvds_meta -lnvds_yml_parser \
 		-lcuda -Wl,-rpath,$(LIB_INSTALL_DIR) \
+		-L/usr/lib/x86_64-linux-gnu/ -lffi
 
 all: $(APP)
 
